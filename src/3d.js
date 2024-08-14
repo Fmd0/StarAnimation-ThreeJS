@@ -7,6 +7,14 @@ const canvasWidth = 56;
 const canvasHeight = 56;
 let canvas, scene, camera, renderer;
 
+
+const addLight = (x, y, z, i, s) => {
+    const light = new THREE.DirectionalLight(0xffffff, i);
+    light.position.set(x, y, z);
+    s.add(light);
+};
+
+
 const init = () => {
     if(canvas) return;
     canvas = window.document.querySelector("#canvas");
@@ -18,8 +26,14 @@ const init = () => {
     renderer.setClearColor("white", 0)
     camera.position.z = 3.8;
 
-    const ambientLight = new THREE.AmbientLight("white", 4);
-    scene.add(ambientLight);
+    scene.add(new THREE.AmbientLight(0xffffff));
+    // addLight(0, 4, 3, 2, scene);
+    addLight(0, 4, 2, 1, scene);
+    addLight(0, -4, 2, 2, scene);
+
+    addLight(4, 0, 2, 1, scene);
+    addLight(-4, 0, 2, 2, scene);
+
 
     const loader = new GLTFLoader();
     loader.load("/src/assets/star.glb", (glb) => {

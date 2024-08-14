@@ -24,7 +24,7 @@ const App = () => {
         const transformObj = {
             degree: Math.PI,
             canvasOpacity: 1.3,
-            addOneOpacity: 1,
+            addOneOpacity: -1,
         }
 
         gsap.to(transformObj, {
@@ -51,10 +51,12 @@ const App = () => {
         })
 
         gsap.to(transformObj, {
-            addOneOpacity: 0,
+            addOneOpacity: 1,
+            delay: 0.4,
             onUpdate: () => {
                 if(addOneRef.current) {
-                    addOneRef.current.style.transform = `translateY(${-Math.sin(transformObj.degree)*57}px)`
+                    addOneRef.current.style.transform = `translateY(${-16-(transformObj.addOneOpacity+1)*11}px)`;
+                    addOneRef.current.style.opacity = 1-Math.abs(transformObj.addOneOpacity);
                 }
             }
         })
