@@ -17,9 +17,9 @@ const App = () => {
         setIsAnimation(true);
         isAnimationTimeIdRef.current = setTimeout(() => {
             setIsAnimation(false);
+            setStarCount(s => s+1);
         }, 1000)
 
-        setStarCount(s => s+1);
 
         const transformObj = {
             degree: Math.PI,
@@ -106,7 +106,12 @@ const App = () => {
                         <p className={`duration-300 ${isAnimation?"max-w-24 opacity-100":"max-w-0 opacity-0"}`}>red</p>
                     </div>
                     <div className="w-[2px] bg-[#ffffff2a] self-stretch"></div>
-                    <p className={`pl-4 pr-5 duration-300 ${isAnimation?"text-neutral-100":"text-neutral-400"}`}>{starCount}</p>
+                    <div className="h-7 overflow-hidden">
+                        <div className={`${isAnimation?"duration-300 -translate-y-1/2 delay-200":""}`}>
+                            <p className={`pl-4 pr-5 duration-300 ${isAnimation ? "text-neutral-100" : "text-neutral-400"}`}>{starCount}</p>
+                            <p className={`pl-4 pr-5 duration-300 ${isAnimation ? "text-neutral-100" : "text-neutral-400"}`}>{starCount+1}</p>
+                        </div>
+                    </div>
                 </button>
                 <p className="absolute right-0 top-0 text-[#0000004a] px-5 text-xl -translate-y-[calc(100%-12px)] opacity-0" ref={addOneRef} >+1</p>
                 <canvas id="canvas" ref={canvasRef} className="absolute pointer-events-none size-[56px] top-0 left-0"></canvas>
