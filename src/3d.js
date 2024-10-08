@@ -36,7 +36,7 @@ const init = () => {
 
 
     const loader = new GLTFLoader();
-    loader.load("/src/assets/star.glb", (glb) => {
+    loader.load("./star.glb", (glb) => {
         starGroup = glb.scene;
         scene.add(starGroup);
         renderer.render(scene, camera);

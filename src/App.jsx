@@ -107,7 +107,7 @@ const App = () => {
                     </div>
                     <div className="w-[2px] bg-[#ffffff2a] self-stretch"></div>
                     <div className="h-7 overflow-hidden">
-                        <div className={`${isAnimation?"duration-300 -translate-y-1/2 delay-200":""}`}>
+                        <div className={`${isAnimation?"duration-300 -translate-y-1/2 delay-200":""} `}>
                             <p className={`pl-4 pr-5 duration-300 ${isAnimation ? "text-neutral-100" : "text-neutral-400"}`}>{starCount}</p>
                             <p className={`pl-4 pr-5 duration-300 ${isAnimation ? "text-neutral-100" : "text-neutral-400"}`}>{starCount+1}</p>
                         </div>
